@@ -1,8 +1,14 @@
 package gui.panel;
 
-import javax.swing.*;
+import util.CenterPanel;
+import util.CircleProgressBar;
+import util.ColorUtil;
+import util.GUIUtil;
 
-public class SpendPanel {
+import javax.swing.*;
+import java.awt.*;
+
+public class SpendPanel extends JPanel {
 
     public static SpendPanel instance = new SpendPanel();
 
@@ -20,7 +26,66 @@ public class SpendPanel {
     JLabel vDayAvgAvailable = new JLabel("￥389");
     JLabel vMonthLeftDay = new JLabel("15天");
 
-    private SpendPanel() {
+    CircleProgressBar bar;
+
+    public SpendPanel() {
+        this.setLayout(new BorderLayout());
+        bar = new CircleProgressBar();
+        bar.setBackgroundColor(ColorUtil.blueColor);
+
+        GUIUtil.setColor(ColorUtil.grayColor, lMonthSpend, lTodaySpend, lAvgSpendPerDay,
+                lMonthLeft, lDayAvgAvailable, lMonthLeftDay, vMonthLeftDay, vDayAvgAvailable,
+                vMonthAvailable, vAvgSpendPerDay);
+        GUIUtil.setColor(ColorUtil.blueColor, vMonthSpend, vTodaySpend);
+
+        vMonthSpend.setFont(new Font("微软雅黑", Font.BOLD, 23));
+        vTodaySpend.setFont(new Font("微软雅黑", Font.BOLD, 23));
+
+        this.add(center(), BorderLayout.CENTER);
+        this.add(south(), BorderLayout.SOUTH);
 
     }
+
+    private JPanel center() {
+        JPanel p = new JPanel();
+        p.setLayout(new BorderLayout());
+        p.add(west(), BorderLayout.WEST);
+        p.add(center2(), BorderLayout.CENTER);
+        return p;
+    }
+
+    private Component center2() {
+        return bar;
+    }
+
+    private Component west() {
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(4, 1));
+        p.add(lMonthSpend);
+        p.add(vMonthSpend);
+        p.add(lTodaySpend);
+        p.add(vTodaySpend);
+        return p;
+    }
+
+    private JPanel south() {
+
+        JPanel p = new JPanel();
+        p.setLayout(new GridLayout(2, 4));
+        p.add(lAvgSpendPerDay);
+        p.add(lMonthLeft);
+        p.add(lDayAvgAvailable);
+        p.add(lMonthLeftDay);
+        p.add(vAvgSpendPerDay);
+        p.add(vMonthAvailable);
+        p.add(vDayAvgAvailable);
+        p.add(vMonthLeftDay);
+        return p;
+
+    }
+
+    public static void main(String[] args) {
+        GUIUtil.showPanel(SpendPanel.instance);
+    }
+
 }
