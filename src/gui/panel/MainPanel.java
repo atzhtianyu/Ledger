@@ -1,5 +1,6 @@
 package gui.panel;
 
+import gui.listener.ToolBarListener;
 import util.CenterPanel;
 import util.GUIUtil;
 
@@ -19,6 +20,7 @@ public class MainPanel extends JPanel {
     public JButton bRecover = new JButton();
 
     public CenterPanel workingPanel;
+
     private MainPanel() {
 
         GUIUtil.setImageIcon(bSpend, "home.png", "消费一览");
@@ -44,6 +46,19 @@ public class MainPanel extends JPanel {
         add(tb, BorderLayout.NORTH);
         add(workingPanel, BorderLayout.CENTER);
 
+        addListener();
+
+    }
+
+    public void addListener() {
+        ToolBarListener listener = new ToolBarListener();
+        bSpend.addActionListener(listener);
+        bRecord.addActionListener(listener);
+        bCategory.addActionListener(listener);
+        bReport.addActionListener(listener);
+        bConfig.addActionListener(listener);
+        bBackup.addActionListener(listener);
+        bRecover.addActionListener(listener);
     }
 
     public static void main(String[] args) {

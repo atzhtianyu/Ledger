@@ -1,23 +1,17 @@
 package gui.model;
 
+import dao.CategoryDAO;
+import entity.Category;
+
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
-import java.util.ArrayList;
 import java.util.List;
 
-public class CategoryComboBoxModel implements ComboBoxModel {
+public class CategoryComboBoxModel implements ComboBoxModel<Category> {
 
-    public List<String> cs = new ArrayList<>();
+    public List<Category> cs = new CategoryDAO().list();
 
     String c;
-
-    public CategoryComboBoxModel() {
-        cs.add("餐饮");
-        cs.add("交通");
-        cs.add("住宿");
-        cs.add("话费");
-        c = cs.get(0);
-    }
 
     @Override
     public void setSelectedItem(Object anItem) {
@@ -26,7 +20,11 @@ public class CategoryComboBoxModel implements ComboBoxModel {
 
     @Override
     public Object getSelectedItem() {
-        return c;
+        if (!cs.isEmpty()) {
+            return c;
+        } else {
+            return null;
+        }
     }
 
     @Override
@@ -35,7 +33,7 @@ public class CategoryComboBoxModel implements ComboBoxModel {
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public Category getElementAt(int index) {
         return cs.get(index);
     }
 

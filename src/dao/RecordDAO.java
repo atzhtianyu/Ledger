@@ -100,6 +100,10 @@ public class RecordDAO {
         return record;
     }
 
+    public List<Record> list() {
+        return list(0, Short.MAX_VALUE);
+    }
+
     public List<Record> list(int start, int count) {
         List<Record> records = new ArrayList<>();
         String sql = "select * from record order by id desc limit ?, ?";

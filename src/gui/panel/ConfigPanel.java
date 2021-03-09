@@ -1,13 +1,14 @@
 package gui.panel;
 
+import gui.listener.ConfigListener;
+import service.ConfigService;
 import util.ColorUtil;
 import util.GUIUtil;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
-public class ConfigPanel extends JPanel {
+public class ConfigPanel extends WorkingPanel {
     public static ConfigPanel instance = new ConfigPanel();
 
     JLabel lBudget = new JLabel("本月预算(￥)");
@@ -36,10 +37,26 @@ public class ConfigPanel extends JPanel {
         pSubmit.add(bSubmit);
         this.add(pSubmit, BorderLayout.SOUTH);
 
+        addListener();
+
     }
 
     public static void main(String[] args) {
         GUIUtil.showPanel(ConfigPanel.instance);
+    }
+
+    @Override
+    public void updateData() {
+        String budget = new ConfigService().get(ConfigService.budget);
+        String mysqlPath = new ConfigService().get(ConfigService.mysqlPath);
+        tfBudget.setText(budget);
+        tfMysqlPath.setText(mysqlPath);
+        tfBudget.grabFocus();
+    }
+
+    public void addListener() {
+        ConfigListener l = new ConfigListener();
+        bSubmit.addActionListener(l);
     }
 
 }

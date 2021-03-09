@@ -91,6 +91,10 @@ public class CategoryDAO {
         return category;
     }
 
+    public List<Category> list() {
+        return list(0, Short.MAX_VALUE);
+    }
+
     public List<Category> list(int start, int count) {
         List<Category> categories = new ArrayList<>();
         String sql = "select * from category order by id desc limit ?, ?";
