@@ -2,7 +2,9 @@ package gui.listener;
 
 import dao.CategoryDAO;
 import entity.Category;
+import gui.frame.MainFrame;
 import gui.model.CategoryComboBoxModel;
+import gui.panel.CategoryPanel;
 import gui.panel.MainPanel;
 import gui.panel.RecordPanel;
 import gui.panel.SpendPanel;
@@ -19,7 +21,9 @@ public class RecordListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         RecordPanel p = RecordPanel.instance;
-        if (!new CategoryComboBoxModel().cs.isEmpty()) {
+        if (p.cbModel.cs.size() == 0) {
+            JOptionPane.showMessageDialog(p, "暂无消费分类，无法添加，请先增加消费分类");
+            MainPanel.instance.workingPanel.show(CategoryPanel.instance);
             return;
         }
         if (!GUIUtil.checkNumber(p.tfSpend, "消费金额")) {

@@ -11,11 +11,11 @@ public class CategoryComboBoxModel implements ComboBoxModel<Category> {
 
     public List<Category> cs = new CategoryDAO().list();
 
-    String c;
+    public Category c;
 
     @Override
     public void setSelectedItem(Object anItem) {
-        c = (String) anItem;
+        c = (Category) anItem;
     }
 
     @Override

@@ -59,7 +59,7 @@ public class RecordPanel extends WorkingPanel {
 
     }
 
-    public Category getSelectedCategory(){
+    public Category getSelectedCategory() {
         return (Category) cbCategory.getSelectedItem();
     }
 
@@ -67,10 +67,10 @@ public class RecordPanel extends WorkingPanel {
         GUIUtil.showPanel(RecordPanel.instance);
     }
 
-    public void resetInput(){
+    public void resetInput() {
         tfSpend.setText("0");
         tfComment.setText("");
-        if(0!=cbModel.cs.size())
+        if (0 != cbModel.cs.size())
             cbCategory.setSelectedIndex(0);
         datePicker.setDate(new Date());
     }
