@@ -14,6 +14,7 @@ public class BackupPanel extends WorkingPanel {
     public BackupPanel() {
         GUIUtil.setColor(ColorUtil.blueColor, bBackup);
         this.add(bBackup);
+        addListener();
     }
 
     public static void main(String[] args) {

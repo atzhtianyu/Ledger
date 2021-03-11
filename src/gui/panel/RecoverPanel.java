@@ -14,6 +14,7 @@ public class RecoverPanel extends WorkingPanel {
     public RecoverPanel() {
         GUIUtil.setColor(ColorUtil.blueColor, bRecover);
         this.add(bRecover);
+        addListener();
     }
 
     public static void main(String[] args) {

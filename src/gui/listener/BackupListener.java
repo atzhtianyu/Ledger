@@ -28,7 +28,7 @@ public class BackupListener implements ActionListener {
         fc.setFileFilter(new FileFilter() {
             @Override
             public boolean accept(File f) {
-                return f.getName().toLowerCase().endsWith("sql");
+                return f.getName().toLowerCase().endsWith(".sql");
             }
 
             @Override
