@@ -17,3 +17,11 @@
 
 #### 业务常见处理手法：
 CRUD操作，配置信息，配置信息初始化，报表生成，一对多关系，多对一关系
+
+#### 部分界面如下：
+消费一览
+![image](https://user-images.githubusercontent.com/53203657/110740864-af0fe500-826e-11eb-9a30-111af5320768.png)
+记一笔消费
+![image](https://user-images.githubusercontent.com/53203657/110740942-cf3fa400-826e-11eb-8c10-cf19877caec4.png)
+月消费报表
+![image](https://user-images.githubusercontent.com/53203657/110740924-c8b12c80-826e-11eb-96eb-41c83cfddc19.png)
