@@ -10,11 +10,11 @@ public class DBUtil {
     static String database = "hutubill";
     static String encoding = "UTF-8";
     static String loginName = "root";
-    static String password = "zty235613";
+    static String password = "******";
 
     static {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
